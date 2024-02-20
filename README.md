@@ -1,24 +1,38 @@
 # Minikube-Install-AzureVM
 
-## 1. Pre-Requirements for Azure VM
+## 1. 🖥️💡 Pre-Requirements for Azure VM
 
 - Connect to your Azure VM: Use your preferred method to connect to your Azure VM, such as SSH.
+-  The following operating systems are supported:
+    - Red Hat Enterprise Linux 8 or Fedora Workstation 34 or later
+    - Ubuntu 20.04 LTS or later
+    - Microsoft Windows 10
+    - macOS 10.15 or later
 
-## 2. Update package lists
+    ### 🛠️📋 System Requirements 👇👇👇👇👇
+
+    | Attribute   | Minimum Requirements            | Recommended                     |
+    |-------------|--------------------------------|---------------------------------|
+    | CPU         | 1.6 GHz or faster processor   | Multi-core i7 or equivalent     |
+    | Memory      | 8 GB                           | 16 GB or more                   |
+    | Disk        | 10 GB free space HDD           | 10 GB or more free space SSD   |
+
+
+## 2. 🔄 Update package lists
 - It's a good practice to update your package lists to ensure you're installing the latest versions of software. Run the following commands:
 
      ```
      sudo apt-get update && apt-get upgrade
     ```
 
-## 3. Install Docker
+## 3. 🐳 Install Docker
 - Minikube requires a container runtime, and Docker is a popular choice. You can install Docker using the following commands:
 
     ```
     sudo apt-get install -y docker.io
     ```
 
-## 4. Add your user to the Docker group
+## 4. 🔑 Add your user to the Docker group
 - To avoid having to use sudo every time you want to run Docker commands, add your user to the Docker group:
 
     ```
@@ -26,7 +40,7 @@
     newgrp docker && su - $USER
     ```
 
-## 5. Install Minikube: 
+## 5. ⚙️ Install Minikube
 - Download and install the Minikube binary using curl:
 
     ```
@@ -35,7 +49,7 @@
     sudo install minikube-linux-amd64 /usr/local/bin/minikube
     ```
 
-## 6. Start Minikube: 
+## 6. ▶️ Start Minikube
 - Now you can start Minikube using the desired driver. For example, to start Minikube with Docker as the driver, run:
 
     ```
@@ -44,7 +58,7 @@
 
     ![alt text](Images/image-1.png)
 
-## 7. Verifying your minikube installation
+## 7. ✔️ Verifying your minikube installation
 - Use the minikube status command to validate that the minikube installation is running successfully:
 
     ```
@@ -53,7 +67,7 @@
 
     ![alt text](Images/image-0.png)
 
-## 8. Adding extensions
+## 8. ➕ Adding extensions
 
 - minikube comes with the bare minimum set of features. To add more features, minikube provides an add-on based extension system. Developers can add more features by installing the needed add-ons.
 
@@ -90,7 +104,7 @@ Enable the dashboard add-on with the following command:
 command. This command will open the dashboard web application in your default browser.
 Press Ctrl+C in the terminal to finish the connection to the dashboard.
 
-## 9. Enabling external access to Ingress.
+## 9. 🌐 Enabling external access to Ingress
 
 - Some exercises require you to identify the external IP and hostname associated to your Ingress so you can access your application from outside the cluster.
 
@@ -125,11 +139,11 @@ configuration.
 
 
 
-## 10. Installing kubectl in Linux-based systems
+## 10. ⌨️ Installing kubectl in Linux-based systems
 
 - You can install kubectl by downloading the binary and moving it to your PATH. At the same time, it is possible to use a package-manager.
 
-    ### 1. Using curl and the binary file
+    ### 1. 📦💻 Using curl and the binary file
 - Open a command-line terminal to download the kubectl binary
 
 
@@ -142,7 +156,7 @@ configuration.
     ```
     curl -LO https://dl.k8s.io/release/v1.29.1/bin/linux/amd64/kubectl
     ```
-    ### 2. Install kubectl
+    ### 2. 🛠️💻 Install kubectl
 
      ```
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -157,13 +171,13 @@ configuration.
 
 ## 11. Using Minikube
 
-  **Creating a Deployment :** 
+  **🛠️ Creating a Deployment :** 
   - A deployment in Kubernetes is a resource that manages a set of identical pods, ensuring that they are always running and available. To create a deployment, you use the `kubectl create deployment` command followed by the name of the deployment and the container image you want to deploy. 
 
     ```
     kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
     ```
-**Exposing the Deployment as a Service :**
+**🚀 Exposing the Deployment as a Service :**
 
 - In Kubernetes, a service is an abstraction that defines a logical set of pods and a policy by which to access them. By exposing a deployment as a service, you make it accessible from outside the Kubernetes cluster. To expose a deployment, you use the `kubectl expose` command
 
@@ -172,7 +186,7 @@ configuration.
     ```
 - This command creates a new service named "hello-minikube" of type NodePort, which means it will allocate a port on each node in the cluster and forward traffic to the pods. `The --port and --target-port` flags specify the port the service listens on and the port the pods are listening on, respectively.
 
-**Accessing the Service :**
+**🚪 Accessing the Service :**
 
 -  Once the service is created, you can access it using the allocated NodePort. you can use the `minikube service` command to `get the URL` of the service and then use `curl` to send an `HTTP request` to that URL.
 
@@ -187,7 +201,7 @@ configuration.
 
 
 
-# Optional
+# ⭐ Optional
 
 - To delete pods in Kubernetes :
 
