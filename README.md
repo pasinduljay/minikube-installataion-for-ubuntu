@@ -71,7 +71,7 @@ With your cluster up and ready, use the following command to enable the add-on:
     minikube addons enable ingress
     ```
 
-      ![alt text](Images/image-3.png)
+    ![alt text](Images/image-3.png)
 
 
 - Installing the Dashboard add-on. The dashboard add-on is not required for this course
