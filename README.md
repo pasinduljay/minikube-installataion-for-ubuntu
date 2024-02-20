@@ -90,14 +90,17 @@ Enable the dashboard add-on with the following command:
     ```
     minikube addons enable dashboard
     ```
-
-# Will try ad add after
-
-
+    ![alt text](image-1.png)
 
 - Once the dashboard is enabled you can reach it by using the `minikube dashboard`
 command. This command will open the dashboard web application in your default browser.
 Press Ctrl+C in the terminal to finish the connection to the dashboard.
+
+    ![alt text](image.png)
+
+
+
+
 
 ## 9. 🌐 Enabling external access to Ingress
 
