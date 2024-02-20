@@ -90,7 +90,7 @@ Enable the dashboard add-on with the following command:
     ```
     minikube addons enable dashboard
     ```
-    ![alt text](Images/image-1.png)
+    ![alt text](Images/image-7.png)
 
 - Once the dashboard is enabled you can reach it by using the `minikube dashboard`
 command. This command will open the dashboard web application in your default browser.
