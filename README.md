@@ -22,7 +22,7 @@
 - It's a good practice to update your package lists to ensure you're installing the latest versions of software. Run the following commands:
 
      ```
-     sudo apt-get update && apt-get upgrade
+     sudo apt-get update && sudo apt-get upgrade
     ```
 
 ## 3. 🐳 Install Docker
