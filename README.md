@@ -75,8 +75,7 @@ available and the installation status.
 
 
 
-- Installing the Ingress Add-on. For this course you must install the ingress add-on.
-With your cluster up and ready, use the following command to enable the add-on:
+- Installing the Ingress Add-on. With your cluster up and ready, use the following command to enable the add-on:
 
     ```
     minikube addons enable ingress
@@ -85,8 +84,7 @@ With your cluster up and ready, use the following command to enable the add-on:
     ![alt text](Images/image-3.png)
 
 
-- Installing the Dashboard add-on. The dashboard add-on is not required for this course
- but serves as a visual graphical interface if you are not comfortable with CLI commands.
+- Installing the Dashboard add-on. The dashboard add-on is serves as a visual graphical interface if you are not comfortable with CLI commands.
 Enable the dashboard add-on with the following command:
 
     ```
@@ -118,7 +116,7 @@ Press Ctrl+C in the terminal to finish the connection to the dashboard.
 - Your IP will probably be different as it depends on your virtual environment
 configuration.
 
-- Second, you must declare a hostname for your ingress, and associate the hostname to the ingress IP. For this course, unless the hostname is already in use, you will declare `hello.example.com` as the hostname.
+- Second, you must declare a hostname for your ingress, and associate the hostname to the ingress IP. Unless the hostname is already in use, you will declare `hello.example.com` as the hostname.
 
 - The association between an IP and a hostname is usually performed by a DNS server,but to avoid registering a domain name to use with Minikube, we can use the system's local name resolution service.
 
