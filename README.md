@@ -36,8 +36,7 @@
 - To avoid having to use sudo every time you want to run Docker commands, add your user to the Docker group:
 
     ```
-    sudo usermod -aG docker $USER
-    newgrp docker && su - $USER
+    sudo usermod -aG docker $USER && newgrp docker
     ```
 
 ## 5. ⚙️ Install Minikube
