@@ -1,4 +1,4 @@
-# Minikube-Install-AzureVM
+# Minikube Installation on Azure VM _OR_ Locally on Ubuntu Using Docker Driver
 
 ## 1. 🖥️💡 Pre-Requirements for Azure VM
 
