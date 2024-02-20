@@ -42,7 +42,7 @@
     minikube start --driver=docker
     ```
 
-    ![alt text](image-1.png)
+    ![alt text](Images/image-1.png)
 
 ## 7. Verifying your minikube installation
 - Use the minikube status command to validate that the minikube installation is running successfully:
@@ -51,7 +51,7 @@
     minikube status
     ```
 
-    ![alt text](image-0.png)
+    ![alt text](Images/image-0.png)
 
 ## 8. Adding extensions
 
@@ -60,7 +60,7 @@
 - Use the `minikube addons list` command for a comprehensive list of the add-ons
 available and the installation status.
 
-    ![alt text](image-4.png)
+    ![alt text](Images/image-4.png)
 
 
 
@@ -71,7 +71,7 @@ With your cluster up and ready, use the following command to enable the add-on:
     minikube addons enable ingress
     ```
 
-    ![alt text](image-3.png)
+      ![alt text](Images/image-3.png)
 
 
 - Installing the Dashboard add-on. The dashboard add-on is not required for this course
@@ -102,7 +102,7 @@ Press Ctrl+C in the terminal to finish the connection to the dashboard.
     minikube ip
     ```
 
-    ![alt text](image-2.png)
+    ![alt text](Images/image-2.png)
 
 - Your IP will probably be different as it depends on your virtual environment
 configuration.
@@ -121,7 +121,7 @@ configuration.
 
     `IP-ADDRESS` hello.example.com
 
-    ![alt text](image-5.png)
+    ![alt text](Images/image-5.png)
 
 
 
@@ -153,7 +153,7 @@ configuration.
     ```
     kubectl version --client
     ```
-    ![alt text](image-6.png)
+    ![alt text](Images/image-6.png)
 
 ## 11. Using Minikube
 
@@ -181,7 +181,7 @@ configuration.
     ```
 - This command retrieves the URL of the `"hello-minikube"` service using `minikube service hello-minikube --url` and then sends a GET request to that URL using `curl`.
 
-    ![alt text](image-7.png)
+    ![alt text](Images/image-7.png)
 
 
 
