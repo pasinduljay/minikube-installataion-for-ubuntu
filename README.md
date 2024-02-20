@@ -2,21 +2,9 @@
 
 ## 1. 🖥️💡 Pre-Requirements for Azure VM
 
+- At least 2 GB of free memory
+- At least 20 GB of free disk space
 - Connect to your Azure VM: Use your preferred method to connect to your Azure VM, such as SSH.
--  The following operating systems are supported:
-    - Red Hat Enterprise Linux 8 or Fedora Workstation 34 or later
-    - Ubuntu 20.04 LTS or later
-    - Microsoft Windows 10
-    - macOS 10.15 or later
-
-    ### 🛠️📋 System Requirements 👇👇👇👇👇
-
-    | Attribute   | Minimum Requirements            | Recommended                     |
-    |-------------|--------------------------------|---------------------------------|
-    | CPU         | 1.6 GHz or faster processor   | Multi-core i7 or equivalent     |
-    | Memory      | 8 GB                           | 16 GB or more                   |
-    | Disk        | 10 GB free space HDD           | 10 GB or more free space SSD   |
-
 
 ## 2. 🔄 Update package lists
 - It's a good practice to update your package lists to ensure you're installing the latest versions of software. Run the following commands:
