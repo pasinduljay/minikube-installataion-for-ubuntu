@@ -142,7 +142,7 @@ configuration.
 
 
     ```
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io release/stable.txt)/bin/linux/amd64/kubectl"
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     ```
 
 - To download a specific version, replace the `$(curl -L -s https://dl.k8s.io/release/stable.txt)`portion of the command with the specific version.
@@ -151,6 +151,11 @@ configuration.
     curl -LO https://dl.k8s.io/release/v1.29.1/bin/linux/amd64/kubectl
     ```
     ### 2. 🛠️💻 Install kubectl
+    - Make the downloaded file executable
+    ```
+    chmod +x kubectl
+    ```
+    - Move the executable file to /usr/local/bin
 
      ```
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
