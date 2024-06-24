@@ -40,6 +40,10 @@
     ```
     minikube start --driver=docker
     ```
+    OR
+    ```
+    minikube start --vm-driver=docker
+    ```
 
     ![alt text](Images/image-1.png)
 
@@ -133,7 +137,7 @@ configuration.
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
     ```
 
-- To download a specific version, replace the `$(curl -L -s https://dl.k8s.io/release/stable.txt)`portion of the command with the specific version.
+- Example: To download a specific version, replace the `$(curl -L -s https://dl.k8s.io/release/stable.txt)`portion of the command with the specific version.
 
     ```
     curl -LO https://dl.k8s.io/release/v1.29.1/bin/linux/amd64/kubectl
