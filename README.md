@@ -17,7 +17,7 @@
 - Minikube requires a container runtime, and Docker is a popular choice. You can install Docker using the following commands:
 
     ```
-    sudo apt-get install -y docker.io
+    sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
     ```
 
 ## 4. 🔑 Add your user to the Docker group
