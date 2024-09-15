@@ -40,10 +40,6 @@
     ```
     minikube start --driver=docker
     ```
-    OR
-    ```
-    minikube start --vm-driver=docker
-    ```
 
     ![alt text](Images/image-1.png)
 
