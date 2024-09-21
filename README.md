@@ -3,7 +3,7 @@
 
 
 <p align="center">
-  <img src="./Images/bg.webp" alt="Minikuber Image">
+  <img src="./Images/background.webp" alt="Minikuber Image">
 </p>
 
 This guide will help you set up Minikube on an Ubuntu VM using the `none` driver with cri-dockerd as the container runtime.
