@@ -1,12 +1,12 @@
 
 # Minikube Installation on Ubuntu (Using `none` Driver with cri-dockerd)
 
-This guide will help you set up Minikube on an Ubuntu VM using the `none` driver with cri-dockerd as the container runtime.
 
 <p align="center">
-  <img src="./Images/bg.webp" alt="Docker Image" style="border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); max-width: 100%; height: auto; transition: transform 0.3s ease;">
+  <img src="./Images/bg.webp" alt="Minikuber Image">
 </p>
 
+This guide will help you set up Minikube on an Ubuntu VM using the `none` driver with cri-dockerd as the container runtime.
 
 ---
 ## 1. 🖥️💡 Pre-Requirements
