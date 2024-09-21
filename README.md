@@ -1,194 +1,191 @@
-# Minikube Installation on Ubuntu Using Docker Driver
 
-## 1. 🖥️💡 Pre-Requirements for Azure VM
+# Minikube Installation on Ubuntu (Using `none` Driver with cri-dockerd)
 
-- At least 2 GB of free memory
-- At least 20 GB of free disk space
-- Connect to your Azure VM: Use your preferred method to connect to your Azure VM, such as SSH.
+This guide will help you set up Minikube on an Ubuntu VM using the `none` driver with cri-dockerd as the container runtime.
 
-## 2. 🔄 Update package lists
-- It's a good practice to update your package lists to ensure you're installing the latest versions of software. Run the following commands:
+<p align="center">
+  <img src="./Images/background.webp" alt="Docker Image" style="border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); max-width: 100%; height: auto; transition: transform 0.3s ease;">
+</p>
 
-     ```
-     sudo apt update && sudo apt upgrade -y
-    ```
+---
+## 1. 🖥️💡 Pre-Requirements
 
-## 3. 🐳 Install Docker
-- Minikube requires a container runtime, and Docker is a popular choice. You can install Docker using the following commands:
+- At least 2 GB of free memory.
+- At least 20 GB of free disk space.
+- SSH access to your Ubuntu VM.
 
-    ```
-    sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
-    ```
+---
 
-## 4. 🔑 Add your user to the Docker group
-- To avoid having to use sudo every time you want to run Docker commands, add your user to the Docker group:
+## 🤖Automated Installation of Minikube with all Dependencies
 
-    ```
-    sudo usermod -aG docker $USER && newgrp docker
-    ```
+To install Docker and Docker Compose using Automated Installation, run the following command in your terminal:
+     
+```
+bash <(curl -Ls https://gist.githubusercontent.com/pasinduljay/4a56fd896373f9f4a783301000570f06/raw/82df68326a2d1785c002d1e7f2d137f5fd927d9d/minikube-installation-ubuntu)
+```
 
-## 5. ⚙️ Install Minikube
-- Download and install the Minikube binary using curl:
+## 👩‍💻Manual Installation of Docker and Docker Compose
 
-    ```
-    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && sudo install minikube-linux-amd64 /usr/local/bin/minikube
-    ```
+### 2. 🔄 Update Your System
 
-## 6. ▶️ Start Minikube
-- Now you can start Minikube using the desired driver. For example, to start Minikube with Docker as the driver, run:
+- Update the package lists to ensure you're installing the latest software:
 
     ```
-    minikube start --driver=docker
+    sudo apt update
     ```
+---
 
-    ![alt text](Images/image-1.png)
+### 3. 🐳 Install Docker
 
-## 7. ✔️ Verifying your minikube installation
-- Use the minikube status command to validate that the minikube installation is running successfully:
-
-    ```
-    minikube status
-    ```
-
-    ![alt text](Images/image-0.png)
-
-## 8. ➕ Adding extensions
-
-- minikube comes with the bare minimum set of features. To add more features, minikube provides an add-on based extension system. Developers can add more features by installing the needed add-ons.
-
-- Use the `minikube addons list` command for a comprehensive list of the add-ons
-available and the installation status.
-
-    ![alt text](Images/image-4.png)
-
-
-
-- Installing the Ingress Add-on. With your cluster up and ready, use the following command to enable the add-on:
+- Install Docker, which Minikube will use as part of the container runtime:
 
     ```
-    minikube addons enable ingress
+    sudo apt-get install -y docker.io
     ```
 
-    ![alt text](Images/image-3.png)
-
-
-- Installing the Dashboard add-on. The dashboard add-on is serves as a visual graphical interface if you are not comfortable with CLI commands.
-Enable the dashboard add-on with the following command:
+- Add your user to the Docker group to avoid using `sudo` with Docker commands:
 
     ```
-    minikube addons enable dashboard
-    ```
-    ![alt text](Images/image-8.png)
-
-- Once the dashboard is enabled you can reach it by using the `minikube dashboard`
-command. This command will open the dashboard web application in your default browser.
-Press Ctrl+C in the terminal to finish the connection to the dashboard.
-
-    ![alt text](Images/image.png)
-
-## 9. 🌐 Enabling external access to Ingress
-
-- Some exercises require you to identify the external IP and hostname associated to your Ingress so you can access your application from outside the cluster.
-
-- Routing traffic from your local machine to your Minikube Kubernetes cluster requires two steps.
-
-- First you must find the local IP assigned to your Ingress add on. The minikube ip command is the easiest way to find the ingress IP:
-
-    ```
-    minikube ip
+    sudo usermod -aG docker \$USER && newgrp docker
     ```
 
-    ![alt text](Images/image-2.png)
+---
 
-- Your IP will probably be different as it depends on your virtual environment
-configuration.
+### 4. ⚙️ Install Minikube and kubectl
 
-- Second, you must declare a hostname for your ingress, and associate the hostname to the ingress IP. Unless the hostname is already in use, you will declare `hello.example.com` as the hostname.
-
-- The association between an IP and a hostname is usually performed by a DNS server,but to avoid registering a domain name to use with Minikube, we can use the system's local name resolution service.
-
-- In Linux and macOS systems, edit the /etc/hosts file with elevated privileges.
+1. Install **kubectl**:
 
     ```
-    sudo vim /etc/hosts
-    ```
-
-- Add the following line to the bottom of the file and replace `IP-ADDRESS` with the IP address listed in the previous step.
-
-    `IP-ADDRESS` hello.example.com
-
-    ![alt text](Images/image-5.png)
-
-
-
-## 10. ⌨️ Installing kubectl in Linux-based systems
-
-- You can install kubectl by downloading the binary and moving it to your PATH. At the same time, it is possible to use a package-manager.
-
-    ### 1. 📦💻 Using curl and the binary file
-- Open a command-line terminal to download the kubectl binary
-
-
-    ```
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-    ```
-
-- Example: To download a specific version, replace the `$(curl -L -s https://dl.k8s.io/release/stable.txt)`portion of the command with the specific version.
-
-    ```
-    curl -LO https://dl.k8s.io/release/v1.29.1/bin/linux/amd64/kubectl
-    ```
-    ### 2. 🛠️💻 Install kubectl
-    - Make the downloaded file executable
-    ```
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
     chmod +x kubectl
-    ```
-    - Move the executable file to /usr/local/bin
-
-     ```
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
     ```
 
-- Verify that kubectl has been installed successfully.
+2. Install **Minikube**:
 
     ```
-    kubectl version --client
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    chmod +x minikube-linux-amd64
+    sudo mv minikube-linux-amd64 /usr/local/bin/minikube
     ```
-    ![alt text](Images/image-6.png)
 
-## 11. Using Minikube
-
-  **🛠️ Creating a Deployment :** 
-  - A deployment in Kubernetes is a resource that manages a set of identical pods, ensuring that they are always running and available. To create a deployment, you use the `kubectl create deployment` command followed by the name of the deployment and the container image you want to deploy. 
+3. Install **conntrack**:
 
     ```
-    kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+    sudo apt install conntrack -y
     ```
-**🚀 Exposing the Deployment as a Service :**
 
-- In Kubernetes, a service is an abstraction that defines a logical set of pods and a policy by which to access them. By exposing a deployment as a service, you make it accessible from outside the Kubernetes cluster. To expose a deployment, you use the `kubectl expose` command
+---
 
-    ```
-    kubectl expose deployment hello-minikube --type=NodePort --port=8080 --target-port=8080
-    ```
-- This command creates a new service named "hello-minikube" of type NodePort, which means it will allocate a port on each node in the cluster and forward traffic to the pods. `The --port and --target-port` flags specify the port the service listens on and the port the pods are listening on, respectively.
+### 5. 🛠️ Install cri-dockerd
 
-**🚪 Accessing the Service :**
+Since you are using the `none` driver, **cri-dockerd** is required as the container runtime. Follow these steps to install it:
 
--  Once the service is created, you can access it using the allocated NodePort. you can use the `minikube service` command to `get the URL` of the service and then use `curl` to send an `HTTP request` to that URL.
+1. Install Golang:
 
     ```
-    curl $(minikube service hello-minikube --url)
+    sudo apt update
+    sudo apt install software-properties-common
+    sudo add-apt-repository ppa:longsleep/golang-backports
+    sudo apt update
+    sudo apt install golang-go
     ```
-- This command retrieves the URL of the `"hello-minikube"` service using `minikube service hello-minikube --url` and then sends a GET request to that URL using `curl`.
 
-    ![alt text](Images/image-7.png)
+2. Install cri-dockerd:
 
+    ```
+    git clone https://github.com/Mirantis/cri-dockerd.git
+    cd cri-dockerd
+    mkdir bin
+    go build -o bin/cri-dockerd
+    sudo install -o root -g root -m 0755 bin/cri-dockerd /usr/local/bin/cri-dockerd
+    sudo cp -a packaging/systemd/* /etc/systemd/system
+    sudo sed -i -e 's,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,' /etc/systemd/system/cri-docker.service
+    sudo systemctl daemon-reload
+    sudo systemctl enable cri-docker.service
+    sudo systemctl enable --now cri-docker.socket
+    ```
 
+---
 
+### 6. 📦 Install cri-tools and CNI Plugins
 
+- Install `crictl`:
 
-# ⭐ Optional
+    ```
+    VERSION=$(curl -s https://api.github.com/repos/kubernetes-sigs/cri-tools/releases/latest | grep tag_name | cut -d '"' -f 4)
+    curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/\$VERSION/crictl-\$VERSION-linux-amd64.tar.gz --output crictl-\$VERSION-linux-amd64.tar.gz
+    sudo tar zxvf crictl-\$VERSION-linux-amd64.tar.gz -C /usr/local/bin
+    rm -f crictl-\$VERSION-linux-amd64.tar.gz
+    ```
+
+- Install CNI plugins:
+
+    ```
+    sudo mkdir -p /opt/cni/bin
+    curl -L -o /tmp/cni-plugins-linux-amd64-v1.1.1.tgz https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-amd64-v1.1.1.tgz
+    sudo tar -C /opt/cni/bin -xzf /tmp/cni-plugins-linux-amd64-v1.1.1.tgz
+    ```
+
+---
+
+### 7. ▶️ Start Minikube with the `none` Driver
+
+Start Minikube with cri-dockerd using the `none` driver:
+
+```
+sudo minikube start --driver=none
+```
+
+---
+
+### 8. 🛠️ Deploy an Application
+
+Now that Minikube is running, let's deploy a sample nginx application to check if everything is working correctly.
+
+1. **Create a Deployment**:
+
+    This will create a Kubernetes deployment with an nginx container.
+
+    ```bash
+    kubectl create deployment my-deployment --image=nginx
+    ```
+
+2. **Expose the Deployment**:
+
+    Expose the nginx deployment as a service using a `LoadBalancer`. This will make it accessible on port 80.
+
+    ```bash
+    kubectl expose deployment my-deployment --type=LoadBalancer --port=80 --target-port=80
+    ```
+
+3. **Check the Service**:
+
+    Verify that the service has been successfully created and is running:
+
+    ```bash
+    kubectl get svc
+    ```
+
+4. **Test the Configuration**:
+
+    Use the following command to get the URL of the nginx service:
+
+    ```bash
+    minikube service my-deployment --url
+    ```
+
+    Then, open the URL in your web browser or use `curl` to confirm that nginx is running:
+
+    ```bash
+    curl $(minikube service my-deployment --url)
+    ```
+
+    If everything is working correctly, you should see the default nginx welcome page.
+
+</br>
+
+## ⭐ Optional
 
 - To delete pods in Kubernetes :
 
@@ -211,6 +208,7 @@ configuration.
     ```
     kubectl delete service hello-minikube
     ```
+</br></br>
 
 # 💰 You can help me by Donating
 <img align="center" alt="Coding" width="400" src="https://github.com/pasinduljay/pasinduljay/blob/main/Resources/user2.gif">
